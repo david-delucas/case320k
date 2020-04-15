@@ -1,31 +1,30 @@
 <!doctype html>
 <html lang="en">
 <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Business case analytics</title>
     {% load static %}
     <!-- Prism CSS -->
     <link href="{% static "tinymce/css/prism.css" %}" rel="stylesheet">
-    <link href="{% static "assets/@clr/ui/clr-ui.min.css" %}" rel="stylesheet">
+    <link href="{% static "assets/materialize-css/dist/css/materialize.min.css" %}" rel="stylesheet">
+    <script src="{% static "assets/materialize-css/dist/js/materialize.min.js" %}"></script>
 
 </head>
 <body>
 
-<header class="header-6">
-    <div class="branding">
-        Business Case Analysis
-    </div>
-    <div class="header-nav">
-        <a href="javascript://" class="active nav-link nav-text">Business Case Analysis</a>
-        <a href="javascript://" class="nav-link nav-text">Blog</a>
-        <a href="/login" class="nav-link nav-text">Login</a>
-        <a href="/register" class="nav-link nav-text">Register</a>
-    </div>
-    <div class="header-actions">
-        <a href="javascript://" class="nav-link nav-icon" aria-label="settings">
-            <clr-icon shape="cog"></clr-icon>
-        </a>
-    </div>
-</header>
 
+  <nav>
+    <div class="nav-wrapper">
+      <a href="/" class="brand-logo">AwesomeBC</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        {% include 'main/includes/navbaritems.html' %}
+      </ul>
+    </div>
+  </nav>
+
+{% include 'main/includes/messaging.html' %}
 
   <div class="container">
     {% block content %}

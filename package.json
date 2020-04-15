@@ -17,11 +17,6 @@
   },
   "homepage": "https://github.com/david-delucas/case320k#readme",
   "dependencies": {
-    "@clr/angular": "^3.1.0",
-    "@clr/core": "^3.1.0",
-    "@clr/icons": "^3.1.0",
-    "@clr/ui": "^3.1.0",
-    "@webcomponents/webcomponentsjs": "^2.4.3",
-    "material-components-web": "^5.1.0"
+    "materialize-css": "^1.0.0-rc.2"
   }
 }
