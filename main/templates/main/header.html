@@ -1,25 +1,31 @@
+<!doctype html>
+<html lang="en">
 <head>
     {% load static %}
     <!-- Prism CSS -->
     <link href="{% static "tinymce/css/prism.css" %}" rel="stylesheet">
-    <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link href="{% static "assets/@clr/ui/clr-ui.min.css" %}" rel="stylesheet">
+
 </head>
 <body>
 
-  <nav>
-    <div class="nav-wrapper">
-      <a href="/" class="brand-logo">Business Case Analysis</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="/">Home</a></li>
-        <li><a href="https://the320k.com/">Blog</a></li>
-        <li><a href="/login">Login</a></li>
-        <li><a href="/register">Register</a></li>
-      </ul>
+<header class="header-6">
+    <div class="branding">
+        Business Case Analysis
     </div>
-  </nav>
+    <div class="header-nav">
+        <a href="javascript://" class="active nav-link nav-text">Business Case Analysis</a>
+        <a href="javascript://" class="nav-link nav-text">Blog</a>
+        <a href="/login" class="nav-link nav-text">Login</a>
+        <a href="/register" class="nav-link nav-text">Register</a>
+    </div>
+    <div class="header-actions">
+        <a href="javascript://" class="nav-link nav-icon" aria-label="settings">
+            <clr-icon shape="cog"></clr-icon>
+        </a>
+    </div>
+</header>
+
 
   <div class="container">
     {% block content %}
