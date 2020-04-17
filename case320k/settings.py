@@ -45,8 +45,9 @@ STRIPE_PUBLISHABLE_KEY =config['stripe']['stripe_publishable_key']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
 
+# --- just add it you get an error with the ALLOWED_HOSTS.
+ALLOWED_HOSTS = ['0.0.0.0', 'localhost']
 
 # Application definition
 
@@ -58,7 +59,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'main.apps.MainConfig',
-    'tinymce'
+    'tinymce',
+    'social_django',
+    'oauth2_provider', # OAuth2
+    'rest_framework', # API    
 ]
 
 TINYMCE_DEFAULT_CONFIG = {
@@ -93,7 +97,8 @@ TINYMCE_DEFAULT_CONFIG = {
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware', # This needs to be first
+    'oauth2_provider.middleware.OAuth2TokenMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -178,4 +183,27 @@ STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
 STATICFILES_DIRS = (
 
     ('assets', os.path.join(PROJECT_DIR, '../node_modules')),
+)
+
+
+
+
+# -- Set up DRF to use OAuth2
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'oauth2_provider.contrib.rest_framework.OAuth2Authentication',
+        'rest_framework.authentication.SessionAuthentication', # To keep the Browsable API
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+}
+
+# --- Specify the authentication backends 
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend', # To keep the Browsable API
+    'social_core.backends.google.GoogleOAuth2',
+    'oauth2_provider.backends.OAuth2Backend',
 )
