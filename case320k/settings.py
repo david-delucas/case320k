@@ -9,18 +9,38 @@ https://docs.djangoproject.com/en/3.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
-
+from sys import platform
 import os
+try:
+        import configparser
+except:
+        from six.moves import configparser
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+path1=os.path.expanduser("~")
+linux_user1=""
+if "linux" in platform.lower():
+    linux_user1=os.popen('whoami').read().rstrip()
+if linux_user1.lower() == "root":
+    path1="/var/www"
+config_file = os.path.join(path1, '.case320k')
+config = configparser.ConfigParser()
+config.read(config_file)
+config=config._sections
+SECRET_KEY=config['settings']['secret_key']
+STRIPE_SECRET_KEY =config['stripe']['stripe_secret_key']
+STRIPE_PUBLISHABLE_KEY =config['stripe']['stripe_publishable_key']
 
+
+#SECRET_KEY = os.environ['SECRET_KEY']
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'rv7r6jfy$%%+7&j4lvk+(z(w@w=4-c#n0e3diet$7m#k)gesnl'
+#SECRET_KEY = 'rv7r6jfy$%%+7&j4lvk+(z(w@w=4-c#n0e3diet$7m#k)gesnl'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True

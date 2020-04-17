@@ -5,6 +5,11 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
 from .forms import NewUserForm
+from django.conf import settings
+from django.views.generic.base import TemplateView
+import stripe
+
+stripe.api_key = settings.STRIPE_SECRET_KEY
 
 # Create your views here.
 def single_slug(request, single_slug):
@@ -37,11 +42,17 @@ def single_slug(request, single_slug):
                                "sidebar": bc_from_series,
                                "this_bc_idx": this_bc_idx})
 
+    _redirect_name = "main:"+single_slug
+    return redirect(_redirect_name)
+
 
 def homepage(request):
     return render(request=request,
                   template_name='main/categories.html',
-                  context={"categories": BusinessCaseCategory.objects.all})
+                  context={"categories": BusinessCaseCategory.objects.all
+                  })
+
+
 
 def register(request):
     if request.method == "POST":
@@ -93,3 +104,20 @@ def login_request(request):
     return render(request = request,
                     template_name = "main/login.html",
                     context={"form":form})                  
+
+def charge(request): # new
+    if request.method == 'POST':
+        charge = stripe.Charge.create(
+            amount=500,
+            currency='usd',
+            description='A Django charge',
+            source=request.POST['stripeToken']
+        )
+        return render(request, 'main/charge.html')                    
+
+    form = NewUserForm
+    return render(request = request,
+                    template_name = "main/charge.html",
+                    context={"form":form,
+                             "stripe_key": settings.STRIPE_PUBLISHABLE_KEY
+                    })

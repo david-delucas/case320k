@@ -40,3 +40,7 @@ class BusinessCase(models.Model):
     def __str__(self):
         return self.bc_name
 
+
+
+class ProcessFlowDef(models.Model):
+    proc_def_name = models.CharField(max_length=200)
