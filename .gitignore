@@ -1,5 +1,5 @@
 case320k/static/
-
+js/dist/
 # Django #
 *.log
 *.pot

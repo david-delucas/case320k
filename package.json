@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "deploy": "tsc"
   },
   "repository": {
     "type": "git",
@@ -18,7 +18,18 @@
   "homepage": "https://github.com/david-delucas/case320k#readme",
   "dependencies": {
     "chart.js": "^2.9.3",
-    "d3": "^5.15.1",
-    "materialize-css": "^1.0.0-rc.2"
+    "jquery": "^3.5.0",
+    "materialize-css": "^1.0.0-rc.2",
+    "mxgraph": "^4.1.1"
+  },
+  "devDependencies": {
+    "browserify": "^13.1.1",
+    "gulp": "^3.9.1",
+    "gulp-sourcemaps": "^1.9.1",
+    "gulp-typescript": "^3.1.3",
+    "tsify": "^2.0.3",
+    "typescript": "^2.1.4",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0"
   }
 }

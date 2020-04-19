@@ -1,0 +1,18 @@
+{
+    "compilerOptions": {
+      "module": "commonjs",
+      "rootDir": "./client/src",
+      "outDir": "./case320k/static/assets",
+      "target": "es2018",
+      "types": []      
+    },
+    "includes": [
+      "./client/src/*.ts"
+    ],
+    "exclude": [
+      "node_modules",
+      "**/*.spec.ts",
+      "bower_components",
+      "case320k"
+  ]    
+}

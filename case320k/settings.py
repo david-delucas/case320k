@@ -43,13 +43,10 @@ STRIPE_PUBLISHABLE_KEY =config['stripe']['stripe_publishable_key']
 #SECRET_KEY = 'rv7r6jfy$%%+7&j4lvk+(z(w@w=4-c#n0e3diet$7m#k)gesnl'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-if config['settings']['debug']:
-    DEBUG = True
-else:
-    DEBUG = False
+DEBUG = config['settings']['debug'] == "True"
 
 # --- just add it you get an error with the ALLOWED_HOSTS.
-ALLOWED_HOSTS = ['0.0.0.0', 'localhost']
+ALLOWED_HOSTS = config['settings']['allowed_hosts'].split(",")
 
 # Application definition
 
@@ -59,6 +56,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     'main.apps.MainConfig',
     'tinymce',
@@ -100,6 +98,7 @@ TINYMCE_DEFAULT_CONFIG = {
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware', # This needs to be first
     'oauth2_provider.middleware.OAuth2TokenMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -186,9 +185,10 @@ STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
 STATICFILES_DIRS = (
 
     ('assets', os.path.join(PROJECT_DIR, '../node_modules') ),
-    ('', os.path.join(PROJECT_DIR, '../static') ),
+    ('', os.path.join(PROJECT_DIR, '../client/img') ),
 )
 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
 
