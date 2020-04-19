@@ -6,12 +6,13 @@
         {% for bc, partone in part_ones.items %}
 
             <div class="col s12 m6 l4">
-                <a href="{{partone}}", style="color:#000">
+                <a href="/slug/{{partone}}", style="color:#000">
                     <div class="card hoverable">
                         <div class="card-content">
                             <div class="card-title">{{bc.bc_series}}</div>
                             <!--<p style="font-size:70%">Published {{bc.bc_creation_datetime}}</p>-->
                             <p>{{bc.series_summary}}</p>
+                            <a class="btn-small.disabled small">[Series]</a>
                         </div>
                     </div>
                 </a>

@@ -43,8 +43,10 @@ STRIPE_PUBLISHABLE_KEY =config['stripe']['stripe_publishable_key']
 #SECRET_KEY = 'rv7r6jfy$%%+7&j4lvk+(z(w@w=4-c#n0e3diet$7m#k)gesnl'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
+if config['settings']['debug']:
+    DEBUG = True
+else:
+    DEBUG = False
 
 # --- just add it you get an error with the ALLOWED_HOSTS.
 ALLOWED_HOSTS = ['0.0.0.0', 'localhost']
@@ -61,6 +63,7 @@ INSTALLED_APPS = [
     'main.apps.MainConfig',
     'tinymce',
     'social_django',
+    'django_pandas',
     'oauth2_provider', # OAuth2
     'rest_framework', # API    
 ]
@@ -182,7 +185,8 @@ STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
 
 STATICFILES_DIRS = (
 
-    ('assets', os.path.join(PROJECT_DIR, '../node_modules')),
+    ('assets', os.path.join(PROJECT_DIR, '../node_modules') ),
+    ('', os.path.join(PROJECT_DIR, '../static') ),
 )
 
 

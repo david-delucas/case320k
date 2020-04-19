@@ -28,7 +28,6 @@ class BusinessCaseSeries(models.Model):
     def __str__(self):
         return self.bc_series
 
-
 class BusinessCase(models.Model):
     bc_name = models.CharField(max_length=200)
     bc_description = models.TextField()
@@ -44,3 +43,24 @@ class BusinessCase(models.Model):
 
 class ProcessFlowDef(models.Model):
     proc_def_name = models.CharField(max_length=200)
+
+    class Meta:
+        # otherwise we get "Seriess in admin"
+        verbose_name_plural = "ProcessFlowDefs"
+
+
+
+from django_pandas.managers import DataFrameManager
+class TimeSeries(models.Model):
+
+    date = models.DateTimeField("Date", default=timezone.now())
+    full_name = models.CharField(max_length=25, default="")
+    age = models.IntegerField("Age",default=0)
+    department = models.CharField(max_length=30, default="Default Dept1")
+    wage = models.FloatField("Wage",default=0.0)
+
+    objects = DataFrameManager()
+
+    class Meta:
+        # otherwise we get "Seriess in admin"
+        verbose_name_plural = "TimeSeries"

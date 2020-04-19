@@ -24,5 +24,7 @@ urlpatterns = [
     path("logout/", views.logout_request, name="logout"),
     path("login/", views.login_request, name="login"),
     path("charge/", views.charge, name="charge"),
-    path("<single_slug>", views.single_slug, name="single_slug"),
+    path("slug/<single_slug>", views.single_slug, name="single_slug"),
+    path('data/', views.TimeSeriesView.as_view(),name="data"),
+    path('graph/', views.graph, name="graph"),
 ]

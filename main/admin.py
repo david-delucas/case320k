@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import BusinessCase, BusinessCaseCategory, BusinessCaseSeries
+from .models import *
 
 from tinymce.widgets import TinyMCE
 from django.db import models
@@ -27,4 +27,6 @@ admin.site.register(BusinessCaseSeries)
 admin.site.register(BusinessCaseCategory)
 admin.site.register(BusinessCase,BusinessCaseAdmin)
 
+admin.site.register(ProcessFlowDef)
+admin.site.register(TimeSeries)
 

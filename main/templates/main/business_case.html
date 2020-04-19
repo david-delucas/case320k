@@ -7,6 +7,7 @@
             <h3>{{business_case.bc_name}}</h3>
             <p style="font-size:70%">Published {{business_case.bc_creation_datetime}}</p>
             {{business_case.bc_description|safe}}
+            <a class="btn-small.disabled small">[Business case]</a>
         </div>
 
         <div class="col s12 m4 l4">
@@ -20,8 +21,7 @@
                         <li>
                             <div class="collapsible-header">{{bc.bc_name}}</div>
                             <div class="collapsible-body">
-                                <p><a href="/{{bc.bc_slug}}"><button class="btn waves-effect waves-light right-align" style="background-color:yellow; color:black">Go</button></a></p>
-
+                                <p><a href="/slug/{{bc.bc_slug}}"><button class="btn waves-effect waves-light right-align" style="background-color:yellow; color:black">Go</button></a></p>
                             </div>
                         </li>
                     {% endif %}

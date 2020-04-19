@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/david-delucas/case320k#readme",
   "dependencies": {
+    "chart.js": "^2.9.3",
+    "d3": "^5.15.1",
     "materialize-css": "^1.0.0-rc.2"
   }
 }
