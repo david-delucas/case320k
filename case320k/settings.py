@@ -184,7 +184,10 @@ STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
 
 STATICFILES_DIRS = (
 
-    ('assets', os.path.join(PROJECT_DIR, '../node_modules') ),
+    ('assets/chart.js', os.path.join(PROJECT_DIR, '../node_modules/chart.js/') ),
+    ('assets/jquery', os.path.join(PROJECT_DIR, '../node_modules/jquery/') ),
+    ('assets/materialize-css', os.path.join(PROJECT_DIR, '../node_modules/materialize-css/') ),
+    ('assets/mxgraph', os.path.join(PROJECT_DIR, '../node_modules/mxgraph/') ),    
     ('', os.path.join(PROJECT_DIR, '../client/img') ),
 )
 

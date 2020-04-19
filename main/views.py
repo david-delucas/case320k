@@ -124,6 +124,10 @@ def charge(request): # new
 
 
 
+def workflow(request):
+    return render(request, 'main/workflow.html')
+
+
 def graph(request):
     return render(request, 'main/graph.html')
 

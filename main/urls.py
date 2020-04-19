@@ -27,4 +27,5 @@ urlpatterns = [
     path("slug/<single_slug>", views.single_slug, name="single_slug"),
     path('data/', views.TimeSeriesView.as_view(),name="data"),
     path('graph/', views.graph, name="graph"),
+    path('workflow/', views.workflow, name="workflow"),
 ]
