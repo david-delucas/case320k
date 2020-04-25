@@ -30,3 +30,6 @@ admin.site.register(BusinessCase,BusinessCaseAdmin)
 admin.site.register(ProcessFlowDef)
 admin.site.register(TimeSeries)
 
+
+admin.site.register(Question)
+admin.site.register(Customer)

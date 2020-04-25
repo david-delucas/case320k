@@ -1,6 +1,6 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
-from .models import BusinessCase, BusinessCaseCategory, BusinessCaseSeries
+from .models import BusinessCase, BusinessCaseCategory, BusinessCaseSeries, Question
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
@@ -8,8 +8,32 @@ from .forms import NewUserForm
 from django.conf import settings
 from django.views.generic.base import TemplateView
 import stripe
+from django.http import Http404
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
+
+
+
+def detail(request, question_id):
+    question = get_object_or_404(Question, pk=question_id)
+    return render(request, 'polls/detail.html', {'question': question})
+
+
+def bc_detail(request,custid, bcid, version):
+    a_list = BusinessCase.objects.all() #filter(pub_date__year=year)
+
+    context = {'count':a_list.count(),'bc_list': a_list}
+    return render(request, 'main/business_case_list.html', context)
+
+def question_detail(request, question_id):
+    question = get_object_or_404(Question, pk=question_id)
+    return render(request, 'main/question_detail.html', {'question': question})
+
+
+def procflow_detail(request,custid, pfid, version):
+    a_list = BusinessCase.objects.all() #filter(pub_date__year=year)
+    context = {'pf_list': a_list}
+    return render(request, 'main/business_case_list.html', context)
 
 # Create your views here.
 def single_slug(request, single_slug):
@@ -123,6 +147,8 @@ def charge(request): # new
                     })
 
 
+def formulaeditor(request):
+    return render(request, 'main/formulaeditor.html')
 
 def workflow(request):
     return render(request, 'main/workflow.html')

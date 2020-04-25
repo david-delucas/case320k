@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/david-delucas/case320k#readme",
   "dependencies": {
+    "@yaireo/tagify": "^3.6.10",
     "chart.js": "^2.9.3",
     "jquery": "^3.5.0",
     "materialize-css": "^1.0.0-rc.2",

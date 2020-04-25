@@ -1,0 +1,18 @@
+<!--business_case_list.html-->
+
+{% extends 'main/header.html' %}
+
+{% block content %}
+
+
+<p>Articles for {{ count }}</p>
+
+{% for bc in bc_list %}
+    <p>{{ bc.bc_name }}</p>
+{% endfor %}
+
+
+{% endblock %}
+
+
+

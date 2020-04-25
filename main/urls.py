@@ -28,4 +28,10 @@ urlpatterns = [
     path('data/', views.TimeSeriesView.as_view(),name="data"),
     path('graph/', views.graph, name="graph"),
     path('workflow/', views.workflow, name="workflow"),
+    path('formulaeditor/', views.formulaeditor, name="formulaeditor"),
+    path("pf/<int:custid>/<int:pfid>/<int:version>", views.procflow_detail, name="procflow_detail"),
+    path("bc/<int:custid>/<int:bcid>/<int:version>", views.bc_detail, name="bc_detail"),
+    path('q/<int:question_id>/', views.question_detail, name='question_detail'),
+    
+
 ]

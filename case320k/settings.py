@@ -164,8 +164,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
-
+#TIME_ZONE = 'UTC'
+TIME_ZONE = config['settings']['time_zone']
 USE_I18N = True
 
 USE_L10N = True
@@ -188,6 +188,7 @@ STATICFILES_DIRS = (
     ('assets/jquery', os.path.join(PROJECT_DIR, '../node_modules/jquery/') ),
     ('assets/materialize-css', os.path.join(PROJECT_DIR, '../node_modules/materialize-css/') ),
     ('assets/mxgraph', os.path.join(PROJECT_DIR, '../node_modules/mxgraph/') ),    
+    ('assets/tagify', os.path.join(PROJECT_DIR, '../node_modules/@yaireo/tagify/') ),    
     ('', os.path.join(PROJECT_DIR, '../client/img') ),
 )
 
